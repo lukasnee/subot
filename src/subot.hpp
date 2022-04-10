@@ -9,4 +9,8 @@
 
 #include <Arduino.h>
 
-int addTwoInts(int a, int b);
+#include "utility/timer.hpp"
+
+namespace SuBot {
+
+} // namespace SuBot

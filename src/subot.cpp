@@ -7,4 +7,6 @@
 
 #include "subot.hpp"
 
-int addTwoInts(int a, int b) { return a + b; }
+namespace SuBot {
+
+} // namespace SuBot
