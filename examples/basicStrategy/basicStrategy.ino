@@ -7,13 +7,22 @@
   by Lukas Neverauskis
 */
 
-#include "subot.hpp"
+#include "suBot.hpp"
+
+SuBot::Timer timerShort(SuBot::Timer::Mode::normal, 100);
+SuBot::Timer timerLong(SuBot::Timer::Mode::normal, 1000);
 
 void setup() { Serial.begin(9600); }
 
 void loop(void) {
-  Serial.print("basic strategy  ");
-  Serial.print( addTwoInts(1, 2));
-  Serial.println();
-  delay(1000);
+  if (!timerShort.isTriggered()) {
+    Serial.println("short");
+  } else {
+    if (!timerLong.isTriggered()) {
+      Serial.println("long");
+    } else {
+      timerShort.reset();
+      timerLong.reset();
+    }
+  }
 }
