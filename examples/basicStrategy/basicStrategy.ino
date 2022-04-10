@@ -9,10 +9,19 @@
 
 #include "suBot.hpp"
 
+Struct Config {
+  constexpr byte remoteFeedbackLedPin = 13;
+  constexpr byte remoteReceivePin = 20;
+};
+
 SuBot::Timer timerShort(SuBot::Timer::Mode::normal, 100);
 SuBot::Timer timerLong(SuBot::Timer::Mode::normal, 1000);
 
-void setup() { Serial.begin(9600); }
+void setup() {
+  Serial.begin(9600);
+  SuBot::Remote remote(remoteFeedbackLedPin, Config::remoteReceivePin);
+  SuBot::Remote::Strategies strategies = remote.getStrategies();
+}
 
 void loop(void) {
   if (!timerShort.isTriggered()) {
